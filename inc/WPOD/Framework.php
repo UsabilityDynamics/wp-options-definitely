@@ -5,7 +5,7 @@
  * @author Felix Arntz <felix-arntz@leaves-and-love.net>
  */
 
-namespace WPOD;
+namespace WPOD {
 
 class Framework {
 	private static $instance = null;
