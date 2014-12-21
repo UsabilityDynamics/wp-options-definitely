@@ -1,24 +1,29 @@
 <?php
-/*
-Plugin Name: Options, Definitely
-Plugin URI: http://wordpress.org/plugins/options-definitely/
-Description: This plugin makes adding options to the WordPress admin area and customizer very simple, yet flexible. It all works using a filter and an array.
-Version: 1.0.0
-Author: Felix Arntz
-Author URI: http://leaves-and-love.net
-License: GNU General Public License v2
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: wpod
-Domain Path: /languages/
-Tags: wordpress, plugin, options, admin, backend, ui, customizer, framework
-*/
 /**
+ * Plugin Name: Options, Definitely
+ * Plugin URI: http://wordpress.org/plugins/options-definitely/
+ * Description: This plugin makes adding options to the WordPress admin area and customizer very simple, yet flexible. It all works using a filter and an array.
+ * Version: 0.5.0
+ * Author: Felix Arntz
+ * Author URI: http://leaves-and-love.net
+ * License: GNU General Public License v2
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain: wpod
+ * Domain Path: /languages/
+ * Tags: wordpress, plugin, options, admin, backend, ui, customizer, framework
+ *
  * @package WPOD
  * @version 1.0.0
  * @author Felix Arntz <felix-arntz@leaves-and-love.net>
  */
 
-define( 'WPOD_VERSION', '1.0.0' );
+
+// Prevent loading multiple times.
+if( function_exists( 'wpod_version_check' ) ) {
+  return;
+}
+
+define( 'WPOD_VERSION', '0.5.0' );
 define( 'WPOD_REQUIRED_WP', '4.0' );
 define( 'WPOD_REQUIRED_PHP', '5.3.0' );
 
@@ -46,4 +51,5 @@ function wpod_init()
     add_action( 'admin_notices', 'wpod_display_version_error_notice' );
   }
 }
+
 add_action( 'plugins_loaded', 'wpod_init' );
