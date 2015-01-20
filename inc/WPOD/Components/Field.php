@@ -20,6 +20,8 @@ class Field extends ComponentBase
 
   public function render( $args = array() )
   {
+    do_action( 'wpod_field_before', $this->slug, $this->args, $member_slug );
+
     if( in_array( $this->args['type'], $this->get_supported_types() ) )
     {
       if( $this->args['type'] == 'repeatable' )
@@ -194,6 +196,8 @@ class Field extends ComponentBase
     {
       wpod_doing_it_wrong( __METHOD__, sprintf( __( 'The type for field %s is not supported. Either specify a supported type or provide a valid callback function instead.', 'wpod' ), $this->slug ), '1.0.0' );
     }
+
+    do_action( 'wpod_field_after', $this->slug, $this->args, $member_slug );
   }
 
   public function render_repeatable( $args = array() )
@@ -422,7 +426,9 @@ class Field extends ComponentBase
       'select',
       'multiselect',
       'media',
+      'datetime',
       'date',
+      'time',
       'color',
       'range',
       'number',
